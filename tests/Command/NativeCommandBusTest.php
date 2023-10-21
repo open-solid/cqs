@@ -1,13 +1,13 @@
 <?php
 
-namespace Yceruto\Cqs\Tests\Command;
+namespace Cqs\Tests\Command;
 
+use Cqs\Command\CommandHandlerNotFound;
+use Cqs\Command\NativeCommandBus;
+use Cqs\Middleware\HandlerMiddleware;
+use Cqs\Middleware\MiddlewareChain;
+use Cqs\Tests\Command\Fixtures\CreateProduct;
 use PHPUnit\Framework\TestCase;
-use Yceruto\Cqs\Command\CommandHandlerNotFound;
-use Yceruto\Cqs\Command\NativeCommandBus;
-use Yceruto\Cqs\Middleware\HandlerMiddleware;
-use Yceruto\Cqs\Middleware\MiddlewareChain;
-use Yceruto\Cqs\Tests\Command\Fixtures\CreateProduct;
 
 class NativeCommandBusTest extends TestCase
 {
@@ -36,7 +36,7 @@ class NativeCommandBusTest extends TestCase
     public function testCommandHandlerNotFound(): void
     {
         $this->expectException(CommandHandlerNotFound::class);
-        $this->expectExceptionMessage('Command handler not found for command "Yceruto\Cqs\Tests\Command\Fixtures\CreateProduct".');
+        $this->expectExceptionMessage('Command handler not found for command "Cqs\Tests\Command\Fixtures\CreateProduct".');
 
         $commandBus = new NativeCommandBus(new MiddlewareChain([new HandlerMiddleware([])]));
 

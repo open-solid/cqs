@@ -1,14 +1,14 @@
 <?php
 
-namespace Yceruto\Cqs\Query;
+namespace Cqs\Query;
 
-use Yceruto\Cqs\Middleware\Envelop;
-use Yceruto\Cqs\Middleware\HandlerNotFound;
-use Yceruto\Cqs\Middleware\MiddlewareStack;
+use Cqs\Middleware\Envelop;
+use Cqs\Middleware\HandlerNotFound;
+use Cqs\Middleware\Middlewares;
 
 readonly class NativeQueryBus implements QueryBus
 {
-    public function __construct(private MiddlewareStack $stack)
+    public function __construct(private Middlewares $middlewares)
     {
     }
 
@@ -17,7 +17,7 @@ readonly class NativeQueryBus implements QueryBus
         $envelop = Envelop::wrap($object);
 
         try {
-            $this->stack->handle($envelop);
+            $this->middlewares->handle($envelop);
 
             return $envelop->result;
         } catch (HandlerNotFound $e) {

@@ -1,10 +1,8 @@
 <?php
 
-namespace Yceruto\Cqs\Middleware;
+namespace Cqs\Middleware;
 
-use ArrayIterator;
-
-readonly class MiddlewareChain implements MiddlewareStack
+readonly class MiddlewareChain implements Middlewares
 {
     /**
      * @param list<Middleware> $middlewares

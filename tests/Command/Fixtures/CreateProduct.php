@@ -1,6 +1,6 @@
 <?php
 
-namespace Yceruto\Cqs\Tests\Command\Fixtures;
+namespace Cqs\Tests\Command\Fixtures;
 
 readonly class CreateProduct
 {

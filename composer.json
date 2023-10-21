@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Yceruto\\Cqs\\": "src/"
+            "Cqs\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yceruto\\Cqs\\Tests\\": "tests/"
+            "Cqs\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev"

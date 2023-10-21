@@ -1,6 +1,6 @@
 <?php
 
-namespace Yceruto\Cqs\Command;
+namespace Cqs\Command;
 
 interface CommandBus
 {

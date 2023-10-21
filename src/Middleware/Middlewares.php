@@ -1,8 +1,8 @@
 <?php
 
-namespace Yceruto\Cqs\Middleware;
+namespace Cqs\Middleware;
 
-interface MiddlewareStack
+interface Middlewares
 {
     public function handle(Envelop $envelop): void;
 }

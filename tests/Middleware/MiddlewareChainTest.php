@@ -1,12 +1,12 @@
 <?php
 
-namespace Yceruto\Cqs\Tests\Middleware;
+namespace Cqs\Tests\Middleware;
 
 use PHPUnit\Framework\TestCase;
 use stdClass;
-use Yceruto\Cqs\Middleware\Envelop;
-use Yceruto\Cqs\Middleware\Middleware;
-use Yceruto\Cqs\Middleware\MiddlewareChain;
+use Cqs\Middleware\Envelop;
+use Cqs\Middleware\Middleware;
+use Cqs\Middleware\MiddlewareChain;
 
 class MiddlewareChainTest extends TestCase
 {

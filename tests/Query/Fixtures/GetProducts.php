@@ -1,6 +1,6 @@
 <?php
 
-namespace Yceruto\Cqs\Tests\Query\Fixtures;
+namespace Cqs\Tests\Query\Fixtures;
 
 class GetProducts
 {

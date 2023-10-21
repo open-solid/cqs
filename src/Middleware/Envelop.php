@@ -1,6 +1,6 @@
 <?php
 
-namespace Yceruto\Cqs\Middleware;
+namespace Cqs\Middleware;
 
 final class Envelop
 {

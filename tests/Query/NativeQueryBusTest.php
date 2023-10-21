@@ -1,12 +1,12 @@
 <?php
 
-namespace Yceruto\Cqs\Tests\Query;
+namespace Cqs\Tests\Query;
 
 use PHPUnit\Framework\TestCase;
-use Yceruto\Cqs\Middleware\HandlerMiddleware;
-use Yceruto\Cqs\Middleware\MiddlewareChain;
-use Yceruto\Cqs\Query\NativeQueryBus;
-use Yceruto\Cqs\Tests\Query\Fixtures\GetProducts;
+use Cqs\Middleware\HandlerMiddleware;
+use Cqs\Middleware\MiddlewareChain;
+use Cqs\Query\NativeQueryBus;
+use Cqs\Tests\Query\Fixtures\GetProducts;
 
 class NativeQueryBusTest extends TestCase
 {

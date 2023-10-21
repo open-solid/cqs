@@ -1,6 +1,6 @@
 <?php
 
-namespace Yceruto\Cqs\Command;
+namespace Cqs\Command;
 
 use Ddd\Domain\Error\DomainError;
 

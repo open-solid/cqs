@@ -1,6 +1,6 @@
 <?php
 
-namespace Yceruto\Cqs\Middleware;
+namespace Cqs\Middleware;
 
 readonly class HandlerMiddleware implements Middleware
 {
