@@ -1,4 +1,4 @@
-# Command Query Separation pattern (Contracts)
+# Contract for Command Query Separation pattern
 
 ## Installation
 

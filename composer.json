@@ -1,6 +1,6 @@
 {
     "name": "yceruto/cqs",
-    "description": "Command Query Separation pattern",
+    "description": "Contract for Command Query Separation pattern",
     "type": "library",
     "license": "MIT",
     "authors": [
