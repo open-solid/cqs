@@ -2,6 +2,9 @@
 
 namespace Yceruto\Cqs\Tests\Command\Fixtures;
 
-class CreateProduct
+readonly class CreateProduct
 {
+    public function __construct()
+    {
+    }
 }

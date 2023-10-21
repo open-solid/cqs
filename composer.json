@@ -16,10 +16,13 @@
         }
     },
     "require": {
+        "php": ">=8.2",
         "yceruto/ddd": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.0"
+        "vimeo/psalm": "^6.0",
+        "phpunit/phpunit": "^10.0",
+        "psalm/plugin-phpunit": "^0.18"
     },
     "autoload": {
         "psr-4": {

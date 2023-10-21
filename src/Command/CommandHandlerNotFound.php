@@ -8,8 +8,8 @@ class CommandHandlerNotFound extends DomainError
 {
     protected const DEFAULT_MESSAGE = 'Command handler not found.';
 
-    public static function from(string $class): self
+    public static function from(string $class): static
     {
-        return self::create(sprintf('Command handler not found for "%s"', $class));
+        return new static(sprintf('Command handler not found for "%s"', $class));
     }
 }
