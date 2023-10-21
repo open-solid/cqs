@@ -2,7 +2,9 @@
 
 namespace Cqs\Tests\Command\Fixtures;
 
-readonly class CreateProduct
+use Cqs\Command\Command;
+
+readonly class CreateProduct implements Command
 {
     public function __construct()
     {

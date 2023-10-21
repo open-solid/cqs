@@ -1,8 +1,10 @@
 <?php
 
-namespace Cqs\Middleware;
+namespace Cqs\Messenger\Middleware;
 
-readonly class MiddlewareChain implements Middlewares
+use Cqs\Messenger\Envelop;
+
+readonly class MiddlewareChain implements MiddlewareStack
 {
     /**
      * @param list<Middleware> $middlewares

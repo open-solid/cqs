@@ -1,12 +1,13 @@
 <?php
 
-namespace Cqs\Tests\Middleware;
+namespace Cqs\Tests\Messenger\Middleware;
 
+use Cqs\Messenger\Envelop;
+use Cqs\Messenger\Middleware\Middleware;
+use Cqs\Messenger\Middleware\MiddlewareChain;
+use Cqs\Tests\Command\Fixtures\CreateProduct;
 use PHPUnit\Framework\TestCase;
 use stdClass;
-use Cqs\Middleware\Envelop;
-use Cqs\Middleware\Middleware;
-use Cqs\Middleware\MiddlewareChain;
 
 class MiddlewareChainTest extends TestCase
 {
@@ -34,7 +35,7 @@ class MiddlewareChainTest extends TestCase
             }
         };
         $stack = new MiddlewareChain([$middleware1, $middleware2, $middleware3]);
-        $envelop = Envelop::wrap(new stdClass());
+        $envelop = Envelop::wrap(new CreateProduct());
         $stack->handle($envelop);
 
         $this->assertSame('123', $envelop->result);

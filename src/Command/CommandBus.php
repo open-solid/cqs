@@ -4,5 +4,5 @@ namespace Cqs\Command;
 
 interface CommandBus
 {
-    public function execute(object $object): mixed;
+    public function execute(Command $command): mixed;
 }

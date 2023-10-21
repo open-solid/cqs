@@ -1,6 +1,8 @@
 <?php
 
-namespace Cqs\Middleware;
+namespace Cqs\Messenger\Middleware;
+
+use Cqs\Messenger\Envelop;
 
 interface Middleware
 {

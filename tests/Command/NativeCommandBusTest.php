@@ -4,8 +4,9 @@ namespace Cqs\Tests\Command;
 
 use Cqs\Command\CommandHandlerNotFound;
 use Cqs\Command\NativeCommandBus;
-use Cqs\Middleware\HandlerMiddleware;
-use Cqs\Middleware\MiddlewareChain;
+use Cqs\Messenger\Middleware\HandlerMiddleware;
+use Cqs\Messenger\Middleware\MiddlewareChain;
+use Cqs\Messenger\NativeMessageBus;
 use Cqs\Tests\Command\Fixtures\CreateProduct;
 use PHPUnit\Framework\TestCase;
 
@@ -28,7 +29,7 @@ class NativeCommandBusTest extends TestCase
                 }
             },
         ]);
-        $commandBus = new NativeCommandBus(new MiddlewareChain([$handlerMiddleware]));
+        $commandBus = new NativeCommandBus(new NativeMessageBus(new MiddlewareChain([$handlerMiddleware])));
 
         $this->assertNull($commandBus->execute($command));
     }
@@ -38,7 +39,7 @@ class NativeCommandBusTest extends TestCase
         $this->expectException(CommandHandlerNotFound::class);
         $this->expectExceptionMessage('Command handler not found for command "Cqs\Tests\Command\Fixtures\CreateProduct".');
 
-        $commandBus = new NativeCommandBus(new MiddlewareChain([new HandlerMiddleware([])]));
+        $commandBus = new NativeCommandBus(new NativeMessageBus(new MiddlewareChain([new HandlerMiddleware([])])));
 
         $commandBus->execute(new CreateProduct());
     }

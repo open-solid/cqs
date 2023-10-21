@@ -2,26 +2,21 @@
 
 namespace Cqs\Command;
 
-use Cqs\Middleware\Envelop;
-use Cqs\Middleware\HandlerNotFound;
-use Cqs\Middleware\Middlewares;
+use Cqs\Messenger\HandlerNotFound;
+use Cqs\Messenger\MessageBus;
 
 readonly class NativeCommandBus implements CommandBus
 {
-    public function __construct(private Middlewares $middlewares)
+    public function __construct(private MessageBus $messageBus)
     {
     }
 
-    public function execute(object $object): mixed
+    public function execute(Command $command): mixed
     {
-        $envelop = Envelop::wrap($object);
-
         try {
-            $this->middlewares->handle($envelop);
-
-            return $envelop->result;
+            return $this->messageBus->dispatch($command);
         } catch (HandlerNotFound $e) {
-            throw CommandHandlerNotFound::from($object, $e);
+            throw CommandHandlerNotFound::from($command, $e);
         }
     }
 }

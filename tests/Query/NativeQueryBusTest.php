@@ -2,11 +2,12 @@
 
 namespace Cqs\Tests\Query;
 
-use PHPUnit\Framework\TestCase;
-use Cqs\Middleware\HandlerMiddleware;
-use Cqs\Middleware\MiddlewareChain;
+use Cqs\Messenger\Middleware\HandlerMiddleware;
+use Cqs\Messenger\Middleware\MiddlewareChain;
+use Cqs\Messenger\NativeMessageBus;
 use Cqs\Query\NativeQueryBus;
 use Cqs\Tests\Query\Fixtures\GetProducts;
+use PHPUnit\Framework\TestCase;
 
 class NativeQueryBusTest extends TestCase
 {
@@ -20,7 +21,7 @@ class NativeQueryBusTest extends TestCase
                 }
             },
         ]);
-        $queryBus = new NativeQueryBus(new MiddlewareChain([$handlerMiddleware]));
+        $queryBus = new NativeQueryBus(new NativeMessageBus(new MiddlewareChain([$handlerMiddleware])));
 
         $this->assertSame(['P1', 'P2'], $queryBus->ask(new GetProducts()));
     }

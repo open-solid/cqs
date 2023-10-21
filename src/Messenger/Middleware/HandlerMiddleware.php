@@ -1,6 +1,9 @@
 <?php
 
-namespace Cqs\Middleware;
+namespace Cqs\Messenger\Middleware;
+
+use Cqs\Messenger\Envelop;
+use Cqs\Messenger\HandlerNotFound;
 
 readonly class HandlerMiddleware implements Middleware
 {
@@ -13,13 +16,13 @@ readonly class HandlerMiddleware implements Middleware
 
     public function handle(Envelop $envelop, callable $next): void
     {
-        $class = get_class($envelop->object);
+        $class = get_class($envelop->message);
 
         if (null === $handler = $this->handlers[$class] ?? null) {
             throw HandlerNotFound::from($class);
         }
 
-        $envelop->result = $handler($envelop->object);
+        $envelop->result = $handler($envelop->message);
 
         $next($envelop);
     }

@@ -2,26 +2,21 @@
 
 namespace Cqs\Query;
 
-use Cqs\Middleware\Envelop;
-use Cqs\Middleware\HandlerNotFound;
-use Cqs\Middleware\Middlewares;
+use Cqs\Messenger\HandlerNotFound;
+use Cqs\Messenger\MessageBus;
 
 readonly class NativeQueryBus implements QueryBus
 {
-    public function __construct(private Middlewares $middlewares)
+    public function __construct(private MessageBus $messageBus)
     {
     }
 
-    public function ask(object $object): mixed
+    public function ask(Query $query): mixed
     {
-        $envelop = Envelop::wrap($object);
-
         try {
-            $this->middlewares->handle($envelop);
-
-            return $envelop->result;
+            return $this->messageBus->dispatch($query);
         } catch (HandlerNotFound $e) {
-            throw QueryHandlerNotFound::from($object, $e);
+            throw QueryHandlerNotFound::from($query, $e);
         }
     }
 }

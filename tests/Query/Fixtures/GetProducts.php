@@ -2,7 +2,9 @@
 
 namespace Cqs\Tests\Query\Fixtures;
 
-class GetProducts
+use Cqs\Query\Query;
+
+class GetProducts implements Query
 {
     public function __construct()
     {

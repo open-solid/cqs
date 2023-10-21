@@ -4,5 +4,5 @@ namespace Cqs\Query;
 
 interface QueryBus
 {
-    public function ask(object $object): mixed;
+    public function ask(Query $query): mixed;
 }
