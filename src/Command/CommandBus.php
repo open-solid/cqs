@@ -4,5 +4,5 @@ namespace Yceruto\Cqs\Command;
 
 interface CommandBus
 {
-    public function execute(object $object): void;
+    public function execute(object $object): mixed;
 }
