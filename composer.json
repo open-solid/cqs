@@ -1,0 +1,35 @@
+{
+    "name": "yceruto/cqs",
+    "description": "Command Query Separation pattern",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yonel Ceruto",
+            "email": "yonelceruto@gmail.com"
+        }
+    ],
+    "repositories": {
+        "yceruto/ddd": {
+            "type": "path",
+            "url": "/Users/yonelceruto/github/yceruto/ddd/"
+        }
+    },
+    "require": {
+        "yceruto/ddd": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yceruto\\Cqs\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yceruto\\Cqs\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev"
+}
