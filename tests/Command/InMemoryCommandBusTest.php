@@ -3,11 +3,11 @@
 namespace Yceruto\Cqs\Tests\Command;
 
 use PHPUnit\Framework\TestCase;
-use Yceruto\Cqs\Command\InMemoryCommandExecutor;
+use Yceruto\Cqs\Command\InMemoryCommandBus;
 use Yceruto\Cqs\Tests\Command\Fixtures\CreateProduct;
 use Yceruto\Cqs\Tests\Command\Fixtures\CreateProductHandler;
 
-class InMemoryCommandExecutorTest extends TestCase
+class InMemoryCommandBusTest extends TestCase
 {
     public function testExecuteCommand(): void
     {
@@ -17,11 +17,10 @@ class InMemoryCommandExecutorTest extends TestCase
             ->method('__invoke')
             ->with($command)
         ;
-
-        $commandExecutor = new InMemoryCommandExecutor([
+        $commandBus = new InMemoryCommandBus([
             CreateProduct::class => $handler,
         ]);
 
-        $commandExecutor->execute($command);
+        $commandBus->execute($command);
     }
 }

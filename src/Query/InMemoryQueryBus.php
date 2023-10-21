@@ -2,7 +2,7 @@
 
 namespace Yceruto\Cqs\Query;
 
-readonly class InMemoryQueryAsker implements QueryAsker
+readonly class InMemoryQueryBus implements QueryBus
 {
     /**
      * @param array<class-string, callable> $queryHandlers

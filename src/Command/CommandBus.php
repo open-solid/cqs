@@ -2,7 +2,7 @@
 
 namespace Yceruto\Cqs\Command;
 
-interface CommandExecutor
+interface CommandBus
 {
     public function execute(object $object): void;
 }

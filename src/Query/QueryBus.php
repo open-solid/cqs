@@ -2,7 +2,7 @@
 
 namespace Yceruto\Cqs\Query;
 
-interface QueryAsker
+interface QueryBus
 {
     public function ask(object $object): mixed;
 }

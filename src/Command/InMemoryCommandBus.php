@@ -2,7 +2,7 @@
 
 namespace Yceruto\Cqs\Command;
 
-readonly class InMemoryCommandExecutor implements CommandExecutor
+readonly class InMemoryCommandBus implements CommandBus
 {
     /**
      * @param array<class-string, callable> $commandHandlers
