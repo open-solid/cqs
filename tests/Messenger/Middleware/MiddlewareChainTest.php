@@ -5,9 +5,8 @@ namespace Cqs\Tests\Messenger\Middleware;
 use Cqs\Messenger\Envelop;
 use Cqs\Messenger\Middleware\Middleware;
 use Cqs\Messenger\Middleware\MiddlewareChain;
-use Cqs\Tests\Command\Fixtures\CreateProduct;
+use Cqs\Tests\Fixtures\CreateProduct;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 
 class MiddlewareChainTest extends TestCase
 {

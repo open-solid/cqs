@@ -9,7 +9,7 @@ readonly class MiddlewareChain implements MiddlewareStack
     /**
      * @param list<Middleware> $middlewares
      */
-    public function __construct(private array $middlewares)
+    public function __construct(private iterable $middlewares)
     {
     }
 

@@ -4,13 +4,11 @@ namespace Cqs\Messenger\Middleware;
 
 use Cqs\Messenger\Envelop;
 use Cqs\Messenger\HandlerNotFound;
+use Psr\Container\ContainerInterface;
 
 readonly class HandlerMiddleware implements Middleware
 {
-    /**
-     * @param array<class-string, callable> $handlers
-     */
-    public function __construct(private array $handlers)
+    public function __construct(private ContainerInterface $handlers)
     {
     }
 
@@ -18,10 +16,11 @@ readonly class HandlerMiddleware implements Middleware
     {
         $class = get_class($envelop->message);
 
-        if (null === $handler = $this->handlers[$class] ?? null) {
+        if (!$this->handlers->has($class)) {
             throw HandlerNotFound::from($class);
         }
 
+        $handler = $this->handlers->get($class);
         $envelop->result = $handler($envelop->message);
 
         $next($envelop);

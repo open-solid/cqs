@@ -1,10 +1,10 @@
 <?php
 
-namespace Cqs\Tests\Query\Fixtures;
+namespace Cqs\Tests\Fixtures;
 
 use Cqs\Query\Query;
 
-class GetProducts implements Query
+readonly class GetProducts implements Query
 {
     public function __construct()
     {

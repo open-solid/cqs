@@ -7,8 +7,10 @@ use Cqs\Command\NativeCommandBus;
 use Cqs\Messenger\Middleware\HandlerMiddleware;
 use Cqs\Messenger\Middleware\MiddlewareChain;
 use Cqs\Messenger\NativeMessageBus;
-use Cqs\Tests\Command\Fixtures\CreateProduct;
+use Cqs\Tests\Fixtures\CreateProduct;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
+use Symfony\Contracts\Service\ServiceLocatorTrait;
 
 class NativeCommandBusTest extends TestCase
 {
@@ -16,8 +18,8 @@ class NativeCommandBusTest extends TestCase
     {
         $tester = $this;
         $command = new CreateProduct();
-        $handlerMiddleware = new HandlerMiddleware([
-            CreateProduct::class => new class($tester) {
+        $factories = [
+            CreateProduct::class => static fn (): callable => new class($tester) {
                 public function __construct(private readonly TestCase $tester)
                 {
                 }
@@ -28,7 +30,12 @@ class NativeCommandBusTest extends TestCase
                     $this->tester->addToAssertionCount(1);
                 }
             },
-        ]);
+        ];
+        /** @psalm-suppress PropertyNotSetInConstructor */
+        $handlerLocator = new class($factories) implements ContainerInterface {
+            use ServiceLocatorTrait;
+        };
+        $handlerMiddleware = new HandlerMiddleware($handlerLocator);
         $commandBus = new NativeCommandBus(new NativeMessageBus(new MiddlewareChain([$handlerMiddleware])));
 
         $this->assertNull($commandBus->execute($command));
@@ -37,9 +44,10 @@ class NativeCommandBusTest extends TestCase
     public function testCommandHandlerNotFound(): void
     {
         $this->expectException(CommandHandlerNotFound::class);
-        $this->expectExceptionMessage('Command handler not found for command "Cqs\Tests\Command\Fixtures\CreateProduct".');
+        $this->expectExceptionMessage('Command handler not found for command "Cqs\Tests\Fixtures\CreateProduct".');
 
-        $commandBus = new NativeCommandBus(new NativeMessageBus(new MiddlewareChain([new HandlerMiddleware([])])));
+        $handlerLocator = $this->createMock(ContainerInterface::class);
+        $commandBus = new NativeCommandBus(new NativeMessageBus(new MiddlewareChain([new HandlerMiddleware($handlerLocator)])));
 
         $commandBus->execute(new CreateProduct());
     }

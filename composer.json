@@ -17,7 +17,8 @@
     },
     "require": {
         "php": ">=8.2",
-        "yceruto/ddd": "*"
+        "yceruto/ddd": "*",
+        "psr/container": "2.0.x-dev"
     },
     "require-dev": {
         "vimeo/psalm": "^6.0",
