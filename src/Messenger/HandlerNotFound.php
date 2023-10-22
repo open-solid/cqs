@@ -2,14 +2,10 @@
 
 namespace Cqs\Messenger;
 
-use Ddd\Domain\Error\DomainError;
-
-class HandlerNotFound extends DomainError
+class HandlerNotFound extends \LogicException
 {
-    protected const DEFAULT_MESSAGE = 'Message handler not found.';
-
-    public static function from(string $class): static
+    public static function from(string $class): self
     {
-        return new static(sprintf('Handler not found for message "%s"', $class));
+        return new self(sprintf('Handler not found for message "%s"', $class));
     }
 }

@@ -2,14 +2,10 @@
 
 namespace Cqs\Command;
 
-use Ddd\Domain\Error\DomainError;
-
-class CommandHandlerNotFound extends DomainError
+class CommandHandlerNotFound extends \LogicException
 {
-    protected const DEFAULT_MESSAGE = 'Command handler not found.';
-
-    public static function from(Command $command, \Throwable $previous = null): static
+    public static function from(Command $command, \Throwable $previous = null): self
     {
-        return new static(sprintf('Command handler not found for command "%s".', get_class($command)), 0, $previous);
+        return new self(sprintf('Command handler not found for command "%s".', get_class($command)), 0, $previous);
     }
 }
