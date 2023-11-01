@@ -7,7 +7,7 @@ use Cqs\Messenger\Envelop;
 readonly class MiddlewareChain implements MiddlewareStack
 {
     /**
-     * @param list<Middleware> $middlewares
+     * @param \Traversable<Middleware>|list<Middleware> $middlewares
      */
     public function __construct(private iterable $middlewares)
     {
@@ -17,7 +17,13 @@ readonly class MiddlewareChain implements MiddlewareStack
     {
         $next = static fn (): null => null;
 
-        foreach (array_reverse($this->middlewares) as $middleware) {
+        if ($this->middlewares instanceof \Traversable) {
+            $middlewares = iterator_to_array($this->middlewares);
+        } else {
+            $middlewares = $this->middlewares;
+        }
+
+        foreach (array_reverse($middlewares) as $middleware) {
             $next = static fn (Envelop $envelop): null => $middleware->handle($envelop, $next);
         }
 
