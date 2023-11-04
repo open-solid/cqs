@@ -7,7 +7,7 @@ use Cqs\Messenger\Envelop;
 readonly class MiddlewareChain implements MiddlewareStack
 {
     /**
-     * @param \Traversable<Middleware>|list<Middleware> $middlewares
+     * @param \Traversable<Middleware>|iterable<Middleware> $middlewares
      */
     public function __construct(private iterable $middlewares)
     {
