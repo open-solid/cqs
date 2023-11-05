@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">=8.2",
-        "psr/container": "2.0.x-dev"
+        "psr/container": "2.0.x-dev",
+        "yceruto/messenger": "dev-main"
     },
     "require-dev": {
         "vimeo/psalm": "^6.0",
@@ -27,6 +28,10 @@
         "psr-4": {
             "Cqs\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests",
+        "psalm": "vendor/bin/psalm --show-info=true"
     },
     "minimum-stability": "dev"
 }

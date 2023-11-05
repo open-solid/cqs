@@ -6,6 +6,8 @@ use Cqs\Query\Query;
 
 /**
  * @template-implements Query<array<string>>
+ *
+ * @psalm-immutable
  */
 readonly class GetProducts implements Query
 {

@@ -2,7 +2,7 @@
 
 namespace Cqs\Command;
 
-use Cqs\Messenger\Message;
+use Yceruto\Messenger\Model\Message;
 
 /**
  * @template T

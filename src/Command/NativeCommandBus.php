@@ -2,8 +2,8 @@
 
 namespace Cqs\Command;
 
-use Cqs\Messenger\HandlerNotFound;
-use Cqs\Messenger\MessageBus;
+use Yceruto\Messenger\Bus\MessageBus;
+use Yceruto\Messenger\Error\NoHandlerForMessage;
 
 readonly class NativeCommandBus implements CommandBus
 {
@@ -15,8 +15,8 @@ readonly class NativeCommandBus implements CommandBus
     {
         try {
             return $this->messageBus->dispatch($command);
-        } catch (HandlerNotFound $e) {
-            throw CommandHandlerNotFound::from($command, $e);
+        } catch (NoHandlerForMessage $e) {
+            throw NoHandlerForCommand::from($command, $e);
         }
     }
 }

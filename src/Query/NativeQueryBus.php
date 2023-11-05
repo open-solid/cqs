@@ -2,8 +2,8 @@
 
 namespace Cqs\Query;
 
-use Cqs\Messenger\HandlerNotFound;
-use Cqs\Messenger\MessageBus;
+use Yceruto\Messenger\Bus\MessageBus;
+use Yceruto\Messenger\Error\NoHandlerForMessage;
 
 readonly class NativeQueryBus implements QueryBus
 {
@@ -15,8 +15,8 @@ readonly class NativeQueryBus implements QueryBus
     {
         try {
             return $this->messageBus->dispatch($query);
-        } catch (HandlerNotFound $e) {
-            throw QueryHandlerNotFound::from($query, $e);
+        } catch (NoHandlerForMessage $e) {
+            throw NoHandlerForQuery::from($query, $e);
         }
     }
 }
