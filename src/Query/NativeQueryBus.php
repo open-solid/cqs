@@ -11,6 +11,9 @@ readonly class NativeQueryBus implements QueryBus
     {
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function ask(Query $query): mixed
     {
         try {

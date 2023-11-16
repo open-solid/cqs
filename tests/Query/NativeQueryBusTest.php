@@ -1,10 +1,10 @@
 <?php
 
-namespace Cqs\Tests\Query;
+namespace Tests\Cqs\Query;
 
 use Cqs\Query\NativeQueryBus;
 use Cqs\Query\NoHandlerForQuery;
-use Cqs\Tests\Fixtures\GetProducts;
+use Tests\Cqs\Fixtures\GetProducts;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Yceruto\Messenger\Bus\NativeMessageBus;
@@ -28,7 +28,7 @@ class NativeQueryBusTest extends TestCase
     public function testNoHandlerForQuery(): void
     {
         $this->expectException(NoHandlerForQuery::class);
-        $this->expectExceptionMessage('No handler for query "Cqs\Tests\Fixtures\GetProducts".');
+        $this->expectExceptionMessage('No handler for query "Tests\Cqs\Fixtures\GetProducts".');
 
         $handlerLocator = $this->createMock(ContainerInterface::class);
         $queryBus = new NativeQueryBus(new NativeMessageBus([new HandleMessageMiddleware($handlerLocator)]));

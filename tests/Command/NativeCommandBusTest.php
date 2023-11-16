@@ -1,10 +1,10 @@
 <?php
 
-namespace Cqs\Tests\Command;
+namespace Tests\Cqs\Command;
 
 use Cqs\Command\NoHandlerForCommand;
 use Cqs\Command\NativeCommandBus;
-use Cqs\Tests\Fixtures\CreateProduct;
+use Tests\Cqs\Fixtures\CreateProduct;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Yceruto\Messenger\Bus\NativeMessageBus;
@@ -18,7 +18,7 @@ class NativeCommandBusTest extends TestCase
     {
         $command = new CreateProduct();
         /** @psalm-suppress UnusedClosureParam */
-        $handler = function ( CreateProduct $command): void {
+        $handler = function (CreateProduct $command): void {
             /** @psalm-suppress InternalMethod */
             $this->addToAssertionCount(1);
         };
@@ -33,7 +33,7 @@ class NativeCommandBusTest extends TestCase
     public function testNoHandlerForCommand(): void
     {
         $this->expectException(NoHandlerForCommand::class);
-        $this->expectExceptionMessage('No handler for command "Cqs\Tests\Fixtures\CreateProduct".');
+        $this->expectExceptionMessage('No handler for command "Tests\Cqs\Fixtures\CreateProduct".');
 
         $handlerLocator = $this->createMock(ContainerInterface::class);
         $commandBus = new NativeCommandBus(new NativeMessageBus([new HandleMessageMiddleware($handlerLocator)]));

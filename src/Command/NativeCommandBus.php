@@ -11,6 +11,9 @@ readonly class NativeCommandBus implements CommandBus
     {
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function execute(Command $command): mixed
     {
         try {

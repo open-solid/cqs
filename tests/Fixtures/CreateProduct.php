@@ -1,6 +1,6 @@
 <?php
 
-namespace Cqs\Tests\Fixtures;
+namespace Tests\Cqs\Fixtures;
 
 use Cqs\Command\Command;
 
