@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Cqs\Fixtures;
+namespace OpenSolid\Tests\Cqs\Fixtures;
 
-use Cqs\Command\Command;
+use OpenSolid\Cqs\Command\Command;
 
 /**
  * @template-implements Command<null>

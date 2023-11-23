@@ -1,9 +1,9 @@
 <?php
 
-namespace Cqs\Command;
+namespace OpenSolid\Cqs\Command;
 
-use Yceruto\Messenger\Bus\MessageBus;
-use Yceruto\Messenger\Error\NoHandlerForMessage;
+use OpenSolid\Messenger\Bus\MessageBus;
+use OpenSolid\Messenger\Error\NoHandlerForMessage;
 
 readonly class NativeCommandBus implements CommandBus
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cqs\Query;
+namespace OpenSolid\Cqs\Query;
 
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\Exception\NoHandlerForMessageException;

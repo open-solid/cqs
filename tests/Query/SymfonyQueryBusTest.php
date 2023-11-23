@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Cqs\Query;
+namespace OpenSolid\Tests\Cqs\Query;
 
-use Cqs\Query\SymfonyQueryBus;
+use OpenSolid\Cqs\Query\SymfonyQueryBus;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
-use Tests\Cqs\Fixtures\GetProducts;
+use OpenSolid\Tests\Cqs\Fixtures\GetProducts;
 
 class SymfonyQueryBusTest extends TestCase
 {

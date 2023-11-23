@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Cqs\Fixtures;
+namespace OpenSolid\Tests\Cqs\Fixtures;
 
-use Cqs\Query\Query;
+use OpenSolid\Cqs\Query\Query;
 
 /**
  * @template-implements Query<array<string>>

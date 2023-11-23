@@ -1,6 +1,6 @@
 <?php
 
-namespace Cqs\Command;
+namespace OpenSolid\Cqs\Command;
 
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\Exception\NoHandlerForMessageException;

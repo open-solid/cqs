@@ -1,6 +1,6 @@
 <?php
 
-namespace Cqs\Command;
+namespace OpenSolid\Cqs\Command;
 
 class NoHandlerForCommand extends \LogicException
 {

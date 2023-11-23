@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Cqs\Command;
+namespace OpenSolid\Tests\Cqs\Command;
 
-use Cqs\Command\NoHandlerForCommand;
-use Cqs\Command\NativeCommandBus;
-use Tests\Cqs\Fixtures\CreateProduct;
+use OpenSolid\Cqs\Command\NoHandlerForCommand;
+use OpenSolid\Cqs\Command\NativeCommandBus;
+use OpenSolid\Tests\Cqs\Fixtures\CreateProduct;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Yceruto\Messenger\Bus\NativeMessageBus;
-use Yceruto\Messenger\Handler\HandlersCountPolicy;
-use Yceruto\Messenger\Handler\HandlersLocator;
-use Yceruto\Messenger\Middleware\HandleMessageMiddleware;
+use OpenSolid\Messenger\Bus\NativeMessageBus;
+use OpenSolid\Messenger\Handler\HandlersCountPolicy;
+use OpenSolid\Messenger\Handler\HandlersLocator;
+use OpenSolid\Messenger\Middleware\HandleMessageMiddleware;
 
 class NativeCommandBusTest extends TestCase
 {
@@ -33,7 +33,7 @@ class NativeCommandBusTest extends TestCase
     public function testNoHandlerForCommand(): void
     {
         $this->expectException(NoHandlerForCommand::class);
-        $this->expectExceptionMessage('No handler for command "Tests\Cqs\Fixtures\CreateProduct".');
+        $this->expectExceptionMessage('No handler for command "OpenSolid\Tests\Cqs\Fixtures\CreateProduct".');
 
         $handlerLocator = $this->createMock(ContainerInterface::class);
         $commandBus = new NativeCommandBus(new NativeMessageBus([new HandleMessageMiddleware($handlerLocator)]));

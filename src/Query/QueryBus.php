@@ -1,6 +1,6 @@
 <?php
 
-namespace Cqs\Query;
+namespace OpenSolid\Cqs\Query;
 
 interface QueryBus
 {

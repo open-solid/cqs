@@ -1,9 +1,9 @@
 <?php
 
-namespace Cqs\Query;
+namespace OpenSolid\Cqs\Query;
 
-use Yceruto\Messenger\Bus\MessageBus;
-use Yceruto\Messenger\Error\NoHandlerForMessage;
+use OpenSolid\Messenger\Bus\MessageBus;
+use OpenSolid\Messenger\Error\NoHandlerForMessage;
 
 readonly class NativeQueryBus implements QueryBus
 {

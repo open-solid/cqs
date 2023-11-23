@@ -1,15 +1,15 @@
 <?php
 
-namespace Tests\Cqs\Query;
+namespace OpenSolid\Tests\Cqs\Query;
 
-use Cqs\Query\NativeQueryBus;
-use Cqs\Query\NoHandlerForQuery;
-use Tests\Cqs\Fixtures\GetProducts;
+use OpenSolid\Cqs\Query\NativeQueryBus;
+use OpenSolid\Cqs\Query\NoHandlerForQuery;
+use OpenSolid\Tests\Cqs\Fixtures\GetProducts;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Yceruto\Messenger\Bus\NativeMessageBus;
-use Yceruto\Messenger\Handler\HandlersLocator;
-use Yceruto\Messenger\Middleware\HandleMessageMiddleware;
+use OpenSolid\Messenger\Bus\NativeMessageBus;
+use OpenSolid\Messenger\Handler\HandlersLocator;
+use OpenSolid\Messenger\Middleware\HandleMessageMiddleware;
 
 class NativeQueryBusTest extends TestCase
 {
@@ -28,7 +28,7 @@ class NativeQueryBusTest extends TestCase
     public function testNoHandlerForQuery(): void
     {
         $this->expectException(NoHandlerForQuery::class);
-        $this->expectExceptionMessage('No handler for query "Tests\Cqs\Fixtures\GetProducts".');
+        $this->expectExceptionMessage('No handler for query "OpenSolid\Tests\Cqs\Fixtures\GetProducts".');
 
         $handlerLocator = $this->createMock(ContainerInterface::class);
         $queryBus = new NativeQueryBus(new NativeMessageBus([new HandleMessageMiddleware($handlerLocator)]));

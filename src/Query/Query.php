@@ -1,8 +1,8 @@
 <?php
 
-namespace Cqs\Query;
+namespace OpenSolid\Cqs\Query;
 
-use Yceruto\Messenger\Model\Message;
+use OpenSolid\Messenger\Model\Message;
 
 /**
  * @template T
