@@ -2,6 +2,7 @@
 
 namespace OpenSolid\Cqs\Query;
 
+use OpenSolid\Cqs\Query\Error\NoHandlerForQuery;
 use OpenSolid\Messenger\Bus\MessageBus;
 use OpenSolid\Messenger\Error\NoHandlerForMessage;
 
@@ -19,7 +20,7 @@ readonly class NativeQueryBus implements QueryBus
         try {
             return $this->messageBus->dispatch($query);
         } catch (NoHandlerForMessage $e) {
-            throw NoHandlerForQuery::from($query, $e);
+            throw NoHandlerForQuery::create($query, $e);
         }
     }
 }

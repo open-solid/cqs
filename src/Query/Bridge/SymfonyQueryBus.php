@@ -1,7 +1,10 @@
 <?php
 
-namespace OpenSolid\Cqs\Query;
+namespace OpenSolid\Cqs\Query\Bridge;
 
+use OpenSolid\Cqs\Query\Error\NoHandlerForQuery;
+use OpenSolid\Cqs\Query\Query;
+use OpenSolid\Cqs\Query\QueryBus;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\Exception\NoHandlerForMessageException;
 use Symfony\Component\Messenger\HandleTrait;
@@ -23,10 +26,10 @@ final class SymfonyQueryBus implements QueryBus
     {
         try {
             return $this->handle($query);
-        } catch (NoHandlerForMessageException) {
-            throw NoHandlerForQuery::from($query);
-        } catch (HandlerFailedException $error) {
-            throw $error->getPrevious() ?? $error;
+        } catch (NoHandlerForMessageException $e) {
+            throw NoHandlerForQuery::create($query, $e);
+        } catch (HandlerFailedException $e) {
+            throw $e->getPrevious() ?? $e;
         }
     }
 }

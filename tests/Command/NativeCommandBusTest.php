@@ -2,15 +2,15 @@
 
 namespace OpenSolid\Tests\Cqs\Command;
 
-use OpenSolid\Cqs\Command\NoHandlerForCommand;
+use OpenSolid\Cqs\Command\Error\NoHandlerForCommand;
 use OpenSolid\Cqs\Command\NativeCommandBus;
-use OpenSolid\Tests\Cqs\Fixtures\CreateProduct;
-use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
 use OpenSolid\Messenger\Bus\NativeMessageBus;
 use OpenSolid\Messenger\Handler\HandlersCountPolicy;
 use OpenSolid\Messenger\Handler\HandlersLocator;
 use OpenSolid\Messenger\Middleware\HandleMessageMiddleware;
+use OpenSolid\Tests\Cqs\Fixtures\CreateProduct;
+use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 
 class NativeCommandBusTest extends TestCase
 {

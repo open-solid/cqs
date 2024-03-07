@@ -1,13 +1,13 @@
 <?php
 
-namespace OpenSolid\Tests\Cqs\Command;
+namespace OpenSolid\Tests\Cqs\Command\Bridge;
 
-use OpenSolid\Cqs\Command\SymfonyCommandBus;
+use OpenSolid\Cqs\Command\Bridge\SymfonyCommandBus;
+use OpenSolid\Tests\Cqs\Fixtures\CreateProduct;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
-use OpenSolid\Tests\Cqs\Fixtures\CreateProduct;
 
 class SymfonyCommandBusTest extends TestCase
 {

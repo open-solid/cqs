@@ -2,14 +2,14 @@
 
 namespace OpenSolid\Tests\Cqs\Query;
 
+use OpenSolid\Cqs\Query\Error\NoHandlerForQuery;
 use OpenSolid\Cqs\Query\NativeQueryBus;
-use OpenSolid\Cqs\Query\NoHandlerForQuery;
-use OpenSolid\Tests\Cqs\Fixtures\GetProducts;
-use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
 use OpenSolid\Messenger\Bus\NativeMessageBus;
 use OpenSolid\Messenger\Handler\HandlersLocator;
 use OpenSolid\Messenger\Middleware\HandleMessageMiddleware;
+use OpenSolid\Tests\Cqs\Fixtures\GetProducts;
+use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 
 class NativeQueryBusTest extends TestCase
 {

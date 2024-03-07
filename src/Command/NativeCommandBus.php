@@ -2,6 +2,7 @@
 
 namespace OpenSolid\Cqs\Command;
 
+use OpenSolid\Cqs\Command\Error\NoHandlerForCommand;
 use OpenSolid\Messenger\Bus\MessageBus;
 use OpenSolid\Messenger\Error\NoHandlerForMessage;
 
@@ -19,7 +20,7 @@ readonly class NativeCommandBus implements CommandBus
         try {
             return $this->messageBus->dispatch($command);
         } catch (NoHandlerForMessage $e) {
-            throw NoHandlerForCommand::from($command, $e);
+            throw NoHandlerForCommand::create($command, $e);
         }
     }
 }
