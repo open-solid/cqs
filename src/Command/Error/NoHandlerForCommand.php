@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenSolid\Cqs\Command\Error;
 
 use OpenSolid\Cqs\Command\Command;

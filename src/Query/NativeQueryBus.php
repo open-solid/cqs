@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenSolid\Cqs\Query;
 
 use OpenSolid\Cqs\Query\Error\NoHandlerForQuery;
@@ -8,8 +10,9 @@ use OpenSolid\Messenger\Error\NoHandlerForMessage;
 
 readonly class NativeQueryBus implements QueryBus
 {
-    public function __construct(private MessageBus $messageBus)
-    {
+    public function __construct(
+        private MessageBus $messageBus,
+    ) {
     }
 
     /**

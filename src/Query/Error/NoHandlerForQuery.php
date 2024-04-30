@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenSolid\Cqs\Query\Error;
 
 use OpenSolid\Cqs\Query\Query;

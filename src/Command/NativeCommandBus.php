@@ -8,8 +8,9 @@ use OpenSolid\Messenger\Error\NoHandlerForMessage;
 
 readonly class NativeCommandBus implements CommandBus
 {
-    public function __construct(private MessageBus $messageBus)
-    {
+    public function __construct(
+        private MessageBus $messageBus,
+    ) {
     }
 
     /**

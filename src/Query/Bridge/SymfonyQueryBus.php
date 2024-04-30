@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenSolid\Cqs\Query\Bridge;
 
 use OpenSolid\Cqs\Query\Error\NoHandlerForQuery;
