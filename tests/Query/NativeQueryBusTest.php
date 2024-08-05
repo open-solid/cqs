@@ -41,7 +41,7 @@ class NativeQueryBusTest extends TestCase
     public function testNoHandlerForQuery(): void
     {
         $this->expectException(NoHandlerForQuery::class);
-        $this->expectExceptionMessage('No handler for query "OpenSolid\Tests\Cqs\Fixtures\GetProducts".');
+        $this->expectExceptionMessage('No handler for query of type "OpenSolid\Tests\Cqs\Fixtures\GetProducts".');
 
         $handlerLocator = $this->createMock(ContainerInterface::class);
         $queryBus = new NativeQueryBus(new NativeMessageBus([new HandlingMiddleware($handlerLocator)]));

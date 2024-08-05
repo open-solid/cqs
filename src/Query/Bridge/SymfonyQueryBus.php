@@ -35,7 +35,7 @@ final class SymfonyQueryBus implements QueryBus
         try {
             return $this->handle($query);
         } catch (NoHandlerForMessageException $e) {
-            throw NoHandlerForQuery::create($query, $e);
+            throw NoHandlerForQuery::from($query, $e);
         } catch (HandlerFailedException $e) {
             throw $e->getPrevious() ?? $e;
         }

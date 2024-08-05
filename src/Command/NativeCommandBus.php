@@ -29,7 +29,7 @@ readonly class NativeCommandBus implements CommandBus
         try {
             return $this->messageBus->dispatch($command);
         } catch (NoHandlerForMessage $e) {
-            throw NoHandlerForCommand::create($command, $e);
+            throw NoHandlerForCommand::from($command, $e);
         }
     }
 }

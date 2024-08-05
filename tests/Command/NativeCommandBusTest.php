@@ -44,7 +44,7 @@ class NativeCommandBusTest extends TestCase
     public function testNoHandlerForCommand(): void
     {
         $this->expectException(NoHandlerForCommand::class);
-        $this->expectExceptionMessage('No handler for command "OpenSolid\Tests\Cqs\Fixtures\CreateProduct".');
+        $this->expectExceptionMessage('No handler for command of type "OpenSolid\Tests\Cqs\Fixtures\CreateProduct".');
 
         $handlerLocator = $this->createMock(ContainerInterface::class);
         $commandBus = new NativeCommandBus(new NativeMessageBus([new HandlingMiddleware($handlerLocator)]));

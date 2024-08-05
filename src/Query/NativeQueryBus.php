@@ -29,7 +29,7 @@ readonly class NativeQueryBus implements QueryBus
         try {
             return $this->messageBus->dispatch($query);
         } catch (NoHandlerForMessage $e) {
-            throw NoHandlerForQuery::create($query, $e);
+            throw NoHandlerForQuery::from($query, $e);
         }
     }
 }

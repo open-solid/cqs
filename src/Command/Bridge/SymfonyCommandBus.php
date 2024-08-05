@@ -35,7 +35,7 @@ final class SymfonyCommandBus implements CommandBus
         try {
             return $this->handle($command);
         } catch (NoHandlerForMessageException $e) {
-            throw NoHandlerForCommand::create($command, $e);
+            throw NoHandlerForCommand::from($command, $e);
         } catch (HandlerFailedException $e) {
             throw $e->getPrevious() ?? $e;
         }
