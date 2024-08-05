@@ -2,13 +2,24 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of OpenSolid package.
+ *
+ * (c) Yonel Ceruto <open@yceruto.dev>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace OpenSolid\Cqs\Command;
 
-use OpenSolid\Messenger\Model\Message;
+use OpenSolid\Bus\Envelope\Message;
 
 /**
  * @template T
+ *
+ * @extends Message<T>
  */
-interface Command extends Message
+readonly class Command extends Message
 {
 }

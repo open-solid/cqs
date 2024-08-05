@@ -2,9 +2,17 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of OpenSolid package.
+ *
+ * (c) Yonel Ceruto <open@yceruto.dev>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace OpenSolid\Cqs\Command\Bridge;
 
-use OpenSolid\Messenger\Model\Envelope;
 use Symfony\Component\Messenger\Exception\LogicException;
 use Symfony\Component\Messenger\Exception\NoHandlerForMessageException;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -16,11 +24,9 @@ trait HandleTrait
     private MessageBusInterface $messageBus;
     private bool $allowAsyncHandling = false;
 
-    /**
-     * @param object|Envelope $message The message or the message pre-wrapped in an envelope
-     */
     private function handle(object $message): mixed
     {
+        /** @psalm-suppress RedundantPropertyInitializationCheck */
         if (!isset($this->messageBus)) {
             throw new LogicException(sprintf('You must provide a "%s" instance in the "%s::$messageBus" property, but that property has not been initialized yet.', MessageBusInterface::class, static::class));
         }

@@ -2,11 +2,20 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of OpenSolid package.
+ *
+ * (c) Yonel Ceruto <open@yceruto.dev>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace OpenSolid\Cqs\Query;
 
+use OpenSolid\Bus\Error\NoHandlerForMessage;
+use OpenSolid\Bus\MessageBus;
 use OpenSolid\Cqs\Query\Error\NoHandlerForQuery;
-use OpenSolid\Messenger\Bus\MessageBus;
-use OpenSolid\Messenger\Error\NoHandlerForMessage;
 
 readonly class NativeQueryBus implements QueryBus
 {
@@ -15,9 +24,6 @@ readonly class NativeQueryBus implements QueryBus
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function ask(Query $query): mixed
     {
         try {

@@ -1,17 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of OpenSolid package.
+ *
+ * (c) Yonel Ceruto <open@yceruto.dev>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace OpenSolid\Tests\Cqs\Fixtures;
 
 use OpenSolid\Cqs\Command\Command;
 
 /**
- * @template-implements Command<null>
- *
- * @psalm-immutable
+ * @extends Command<void>
  */
-readonly class CreateProduct implements Command
+readonly class CreateProduct extends Command
 {
-    public function __construct()
-    {
-    }
 }

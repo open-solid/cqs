@@ -1,13 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of OpenSolid package.
+ *
+ * (c) Yonel Ceruto <open@yceruto.dev>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace OpenSolid\Tests\Cqs\Command;
 
+use OpenSolid\Bus\Handler\MessageHandlersCountPolicy;
+use OpenSolid\Bus\Handler\MessageHandlersLocator;
+use OpenSolid\Bus\Middleware\HandlingMiddleware;
+use OpenSolid\Bus\NativeMessageBus;
 use OpenSolid\Cqs\Command\Error\NoHandlerForCommand;
 use OpenSolid\Cqs\Command\NativeCommandBus;
-use OpenSolid\Messenger\Bus\NativeMessageBus;
-use OpenSolid\Messenger\Handler\HandlersCountPolicy;
-use OpenSolid\Messenger\Handler\HandlersLocator;
-use OpenSolid\Messenger\Middleware\HandleMessageMiddleware;
 use OpenSolid\Tests\Cqs\Fixtures\CreateProduct;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -22,9 +33,9 @@ class NativeCommandBusTest extends TestCase
             /** @psalm-suppress InternalMethod */
             $this->addToAssertionCount(1);
         };
-        $handlerMiddleware = new HandleMessageMiddleware(new HandlersLocator([
+        $handlerMiddleware = new HandlingMiddleware(new MessageHandlersLocator([
             CreateProduct::class => [$handler],
-        ]), HandlersCountPolicy::SINGLE_HANDLER);
+        ]), MessageHandlersCountPolicy::SINGLE_HANDLER);
         $commandBus = new NativeCommandBus(new NativeMessageBus([$handlerMiddleware]));
 
         $this->assertNull($commandBus->execute($command));
@@ -36,7 +47,7 @@ class NativeCommandBusTest extends TestCase
         $this->expectExceptionMessage('No handler for command "OpenSolid\Tests\Cqs\Fixtures\CreateProduct".');
 
         $handlerLocator = $this->createMock(ContainerInterface::class);
-        $commandBus = new NativeCommandBus(new NativeMessageBus([new HandleMessageMiddleware($handlerLocator)]));
+        $commandBus = new NativeCommandBus(new NativeMessageBus([new HandlingMiddleware($handlerLocator)]));
 
         $commandBus->execute(new CreateProduct());
     }
