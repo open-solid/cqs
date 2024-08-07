@@ -17,8 +17,7 @@ use OpenSolid\Bus\Envelope\Message;
 
 /**
  * @template T
- *
- * @extends Message<T>
+ * @template-extends Message<T>
  */
 readonly class Query extends Message
 {
