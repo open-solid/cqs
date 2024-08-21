@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace OpenSolid\Tests\Cqs\Query;
 
-use OpenSolid\Bus\Handler\MessageHandlersLocator;
+use OpenSolid\Bus\Handler\HandlersLocator;
 use OpenSolid\Bus\Middleware\HandlingMiddleware;
 use OpenSolid\Bus\NativeMessageBus;
 use OpenSolid\Cqs\Query\Error\NoHandlerForQuery;
@@ -28,7 +28,7 @@ class NativeQueryBusTest extends TestCase
     {
         /** @psalm-suppress UnusedClosureParam */
         $handler = static fn (GetProducts $query): array => ['P1', 'P2'];
-        $handlerMiddleware = new HandlingMiddleware(new MessageHandlersLocator([
+        $handlerMiddleware = new HandlingMiddleware(new HandlersLocator([
             GetProducts::class => [$handler],
         ]));
         $queryBus = new NativeQueryBus(new NativeMessageBus([$handlerMiddleware]));

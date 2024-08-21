@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace OpenSolid\Tests\Cqs\Command;
 
-use OpenSolid\Bus\Handler\MessageHandlersCountPolicy;
-use OpenSolid\Bus\Handler\MessageHandlersLocator;
+use OpenSolid\Bus\Handler\HandlersCountPolicy;
+use OpenSolid\Bus\Handler\HandlersLocator;
 use OpenSolid\Bus\Middleware\HandlingMiddleware;
 use OpenSolid\Bus\NativeMessageBus;
 use OpenSolid\Cqs\Command\Error\NoHandlerForCommand;
@@ -33,9 +33,9 @@ class NativeCommandBusTest extends TestCase
             /** @psalm-suppress InternalMethod */
             $this->addToAssertionCount(1);
         };
-        $handlerMiddleware = new HandlingMiddleware(new MessageHandlersLocator([
+        $handlerMiddleware = new HandlingMiddleware(new HandlersLocator([
             CreateProduct::class => [$handler],
-        ]), MessageHandlersCountPolicy::SINGLE_HANDLER);
+        ]), policy: HandlersCountPolicy::SINGLE_HANDLER);
         $commandBus = new NativeCommandBus(new NativeMessageBus([$handlerMiddleware]));
 
         $this->assertNull($commandBus->execute($command));
